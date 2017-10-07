@@ -355,7 +355,8 @@
         if (self->_currentVisibleRow == 0) {
             NSUInteger paddingDays = [DAYUtils firstWeekdayInMonth:self->_visibleMonth ofYear:self->_visibleYear] - 1;
             
-            self->_currentVisibleRow = floor((day - paddingDays) / 7);
+            float result = (day - paddingDays) / 7;
+            self->_currentVisibleRow = floor(result) == result?(result - 1):floor(result);
         }
     }
     
